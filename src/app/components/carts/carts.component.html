@@ -1,0 +1,52 @@
+<ng-container>
+    <div class="container" *ngIf="produtcs.length>=1">
+        <div class="card-table">
+            <div class="card-product">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>SL.No</th>
+                            <th>ProductName</th>
+                            <th>Product Image</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>delete</th>
+                        </tr>
+                    </thead>
+                <tbody *ngFor="let item of produtcs; let i=index">
+                        <tr>
+                            <td>{{i+1}}</td>
+                            <td>{{item.productName}}</td>
+                            <td><img style="width: 120px;" src="{{item.img}}"></td>
+                            <td>{{item.description}}</td>
+                            <td>{{item.price}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.totalItem}}</td>
+                            <td><button (click)="deleteItem(item)" class="btn btn-danger"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                    <tr>
+                    </tr>
+                </tbody>
+                        <td colspan="4"> </td>
+                            <td> <button (click)="emptycar()" class="btn btn-danger">Empty Card</button></td>
+                            <td> <button routerLink="/produtcs" class="btn btn-success">Shop More</button></td>
+                            <td> <button routerLink="/produtcs" class="btn btn-warning">Chect Out</button></td>
+                            <td> <button  (click)="getDiscount()" class="btn btn-warning">Get Discount</button></td>
+                            <td><strong>Grand Total:</strong> {{grandtotal}}</td>
+                </table>
+            </div>        
+        </div>
+    </div>
+</ng-container>
+
+
+<!--Empyt Card-->
+<ng-container *ngIf="produtcs.length==0">
+    <div class="center">
+        <h4>Your Card Is Empty</h4>
+        <h6>Add Item</h6>
+        <button routerLink="/produtcs" class="btn btn-dark"> Shop Now</button>
+    </div>
+</ng-container>
